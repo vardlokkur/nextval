@@ -55,10 +55,10 @@ class SequencesService implements Sequences {
                     }
                     System.out.println(String.format("[%d] - next val: %d", threadId, nextValue));
                     return nextValue;
-                } finally {
-                    System.out.println(String.format("[%d] - commit", threadId));
-                    connection.commit();
                 }
+            } finally {
+                System.out.println(String.format("[%d] - commit", threadId));
+                connection.commit();
             }
         }
     }
