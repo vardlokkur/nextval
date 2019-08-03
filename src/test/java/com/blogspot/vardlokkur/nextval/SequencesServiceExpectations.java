@@ -12,6 +12,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * @author Warlock
  */
@@ -37,11 +39,11 @@ public class SequencesServiceExpectations {
         for (int i = 0; i < 3; i++) {
             completion.submit(callable());
         }
-
-        int completed = 0;
-        while (completed < 3) {
+        
+        for (int completed = 1; completed <= 3; completed++) {
             final Future<Integer> result = completion.take();
-            System.out.println(String.format("Result %d - %d", ++completed, result.get()));
+            System.out.println(String.format("Result %d - %d", completed, result.get()));
+            assertEquals(Integer.valueOf(completed), result.get());
         }
     }
 

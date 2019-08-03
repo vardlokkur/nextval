@@ -7,6 +7,6 @@ import java.sql.SQLException;
  */
 public interface Sequences {
 
-    Integer nextValue(String sequenceName) throws SQLException;
+    int nextValue(String sequenceName) throws SQLException;
 
 }
